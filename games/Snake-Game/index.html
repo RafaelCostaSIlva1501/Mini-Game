@@ -4,18 +4,92 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Snake Game</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 
-        <link rel="stylesheet" href="style/style.css"/>
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+
+        <link rel="stylesheet" href="style/style.css" />
+
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     </head>
     <body>
+        <header>
+            <div>
+                <a href="../../index.html">
+                    <span class="material-symbols-outlined"> arrow_back </span>
+                </a>
+
+                <h1>Mini-Games</h1>
+            </div>
+
+            <div>
+                <button style="display: none" id="unpauseGame">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                </button>
+
+                <button id="pauseGame">
+                    <span class="material-symbols-outlined">pause</span>
+                </button>
+
+                <button id="openSettings">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="game">
+                <div class="play-game">
+                    <canvas width="380px" height="350px" id="canvas"></canvas>
+
+                    <button class="button-play-game" onclick="playGame()">
+                        Jogar
+                    </button>
+                </div>
+
+                <!--Botões de controle-->
+                <section class="btn-direction" id="Dpad">
+                    <button class="up" id="btnUp">
+                        <span class="material-symbols-outlined"
+                            >arrow_drop_up</span
+                        >
+                    </button>
+
+                    <button class="down" id="btnDown">
+                        <span class="material-symbols-outlined"
+                            >arrow_drop_down</span
+                        >
+                    </button>
+
+                    <button class="center"></button>
+
+                    <button class="left" id="btnLeft">
+                        <span class="material-symbols-outlined"
+                            >arrow_left</span
+                        >
+                    </button>
+
+                    <button class="right" id="btnRight">
+                        <span class="material-symbols-outlined"
+                            >arrow_right</span
+                        >
+                    </button>
+                </section>
+            </section>
+
+            <section></section>
+
+            <section>
+                <h2>Score: <span id="score">0</span></h2>
+            </section>
+        </main>
+
         <!--Menu de configurações-->
         <menu id="settings">
-
             <!--Cabeçalho do menu-->
             <section class="menu-header">
-
                 <!--Título do menu-->
                 <h2>Configurações</h2>
 
@@ -27,38 +101,30 @@
 
             <!--Conteúdo do menu-->
             <section class="menu-options">
-
-                <!--Configurar velocidade da cobra--> 
+                <!--Configurar velocidade da cobra-->
                 <div class="setting-speed">
                     <h3>Velocidade</h3>
                     <div>
-
                         <!--Velocidade miníma-->
-                        <button id="minSpeed">
-                            Min
-                        </button>
+                        <button id="minSpeed">Min</button>
 
                         <!--Velocidade média (padrão)-->
-                        <button id="defaultSpeed">
-                            Padrão
-                        </button>
+                        <button id="defaultSpeed">Padrão</button>
 
                         <!--Velocidade máxima-->
-                        <button id="maxSpeed">
-                            Max
-                        </button>
+                        <button id="maxSpeed">Max</button>
                     </div>
                 </div>
 
                 <!--Configurar linhas de grade-->
                 <div class="setting-grid">
                     <h3>Linhas de grade</h3>
-                    <input type="checkbox" id="gridOnOff" checked/>
+                    <input type="checkbox" id="gridOnOff" checked />
                 </div>
 
                 <div class="setting-collision">
                     <h3>Colisão com o corpo</h3>
-                    <input type="checkbox" id="selfCollisionOnOff" checked>
+                    <input type="checkbox" id="selfCollisionOnOff" checked />
                 </div>
 
                 <div class="setting-color-snake">
@@ -96,95 +162,77 @@
 
                 <div class="setting-color-food">
                     <h3>Cor da comida</h3>
-                    <button class="btnFoodColor" style="background-color: #9c0000;">.</button>
+                    <button
+                        class="btnFoodColor"
+                        style="background-color: #9c0000"
+                    >
+                        .
+                    </button>
 
-                    <button class="btnFoodColor"
-                    style="background-color: #71009e;"></button>
+                    <button
+                        class="btnFoodColor"
+                        style="background-color: #71009e"
+                    ></button>
 
-                    <button class="btnFoodColor" style="background-color: #afaf00;"></button>
+                    <button
+                        class="btnFoodColor"
+                        style="background-color: #afaf00"
+                    ></button>
 
-                    <button class="btnFoodColor" style="background-color: #00459e;"></button>
+                    <button
+                        class="btnFoodColor"
+                        style="background-color: #00459e"
+                    ></button>
 
-                    <button class="btnFoodColor" style="background-color: #b12f00;"></button>
+                    <button
+                        class="btnFoodColor"
+                        style="background-color: #b12f00"
+                    ></button>
 
-                    <button class="btnFoodColor" style="background-color: #096800;"></button>
+                    <button
+                        class="btnFoodColor"
+                        style="background-color: #096800"
+                    ></button>
                 </div>
 
                 <div class="setting-controls">
                     <h3>Controles</h3>
                     <button class="btnControls">
-                        <img src="img/D-Pad tradicional.jpg">
+                        <img src="img/D-Pad tradicional.jpg" />
                     </button>
 
                     <button class="btnControls">
-                        <img src="img/D-Pad Em Linha.jpg">
+                        <img src="img/D-Pad Em Linha.jpg" />
                     </button>
 
                     <button class="btnControls">
-                        <img src="img/Sem D-Pad.jpg">
+                        <img src="img/Sem D-Pad.jpg" />
                     </button>
                 </div>
             </section>
         </menu>
 
         <!--Tela do game-->
-        <section>
-            <header>
-                <p>Score: <span id="score">0</span></p>
-                <div>
-                    <button style="display: none;" id="unpauseGame">
-                        <span class="material-symbols-outlined">play_arrow</span>
-                    </button>
-
-                    <button id="pauseGame"> 
-                        <span class="material-symbols-outlined">pause</span>
-                    </button>
-
-                    <button id="openSettings">
-                        <span class="material-symbols-outlined">settings</span>
-                    </button>
-                </div>
-            </header>
+        <section style="display: none">
             <div class="canvas-border">
-
-                <section id="StartGameDisplay" class="displayGame" style="display: flex;">
+                <section
+                    id="StartGameDisplay"
+                    class="displayGame"
+                    style="display: flex"
+                >
                     <h2>Snake Game</h2>
-                    <button onclick="playGame()">Jogar</button>
                 </section>
 
-                <canvas width="380px" height="350px" id="canvas"></canvas>
-
-                <section id="GameOverDisplay" class="displayGame" style="display: none;">
+                <section
+                    id="GameOverDisplay"
+                    class="displayGame"
+                    style="display: none"
+                >
                     <h2>Game Over</h2>
                     <button id="btnPlayAgain">Jogar Novamente</button>
                 </section>
-
             </div>
         </section>
-
-        <!--Botões de controle-->
-        <section class="btn-direction" id="Dpad">
-            <button class="up" id="btnUp">
-                <span class="material-symbols-outlined">arrow_drop_up</span>
-            </button>
-
-            <button class="down" id="btnDown">
-                <span class="material-symbols-outlined">arrow_drop_down</span>
-            </button>
-
-            <button class="center">
-            </button>
-
-            <button class="left" id="btnLeft">
-                <span class="material-symbols-outlined">arrow_left</span>
-            </button>
-
-            <button class="right" id="btnRight">
-                <span class="material-symbols-outlined">arrow_right</span>
-            </button>
-            
-        </section>
-        
 
         <script src="script/script.js"></script>
         <script src="script/settings.js"></script>
