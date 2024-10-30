@@ -1,106 +1,104 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
-:root {
-    --cor01: #012e40;
-    --cor02: #0083b9;
-    --cor03: #90e0f1;
-    --cor04: #b8f2b6;
-    --cor05: #f2f2f0;
-}
-
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-body {
-    background: linear-gradient(150deg, var(--cor03), var(--cor02));
-}
-
+/* Estilo do cabeçalho */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    padding: 10px;
-
-    background: linear-gradient(90deg, var(--cor01), var(--cor02));
+    flex-wrap: nowrap;
+    padding: 20px 50px;
+    background-color: #121212;
 }
 
-header h1 {
-    color: var(--cor05);
-    font-size: 1.3rem;
-    font-weight: 700;
+header .logo h1 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 28px;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    padding: 10px;
+header .logo span {
+    color: #5218d8;
 }
 
-/* Estilo para o container principal */
-.game-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-
-    padding: 10px;
-    width: 100%;
-
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px #00000063;
-}
-
-/* Estilo para a imagem do jogo */
-.game-image img {
-    width: 150px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px #0000001a;
-}
-
-/* Estilo para a descrição do jogo */
-.game-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-
-    color: var(--cor01);
-}
-
-.game-description h2 {
-    margin-bottom: 8px;
-    font-size: 18px;
-    color: var(--cor02);
-}
-
-.game-description p {
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.game-description a {
-    padding: 5px;
-
-    border: 1px solid var(--cor01);
-    border-radius: 2px;
-
-    color: var(--cor01);
-    text-align: center;
+header nav a {
+    color: #bbb;
+    margin-left: 20px;
     text-decoration: none;
-
-    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
-.game-description a:hover {
-    transition: background-color 0.3s, color 0.3s;
-    background-color: var(--cor01);
+header nav a:hover {
+    color: white;
+}
 
-    color: var(--cor05);
+/* Seção de Games */
+#games {
+    padding: 50px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.game-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 15px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-card img {
+    width: 100%;
+}
+
+.game-card h3 {
+    margin: 15px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.game-card p {
+    color: #666;
+    margin: 0 15px 15px;
+}
+
+.play-button {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background-color: #5218d8;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.play-button:hover {
+    background-color: #5b30c0;
+}
+
+/* Rodapé */
+footer {
+    background-color: #121212;
+    color: white;
+    padding: 30px;
+    text-align: center;
 }
