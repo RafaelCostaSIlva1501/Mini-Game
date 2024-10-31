@@ -55,7 +55,8 @@ header nav a:hover {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px #0000001a;
-    width: 300px;
+    width: 80%;
+    max-width: 500px;
     margin: 15px;
     overflow: hidden;
     transition: transform 0.3s;
