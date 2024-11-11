@@ -9,86 +9,34 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
-    
     <header>
       <div class="logo">
         <h1>Mini<span>Games</span></h1>
       </div>
-      <nav>
+
+      <nav class="menu">
+        <button class="button-menu">
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+
         <a href="#games">Jogos</a>
         <a href="#contact">Contato</a>
       </nav>
+
+      <button class="button-menu">
+        <span class="material-symbols-outlined"> menu </span>
+      </button>
     </header>
 
     <section id="games" class="game-list">
-      <div class="cards-container">
-        <!-- Game Card 1 -->
-        <div class="game-card">
-          <img src="img/snake-logo.webp" alt="Snake Game Banner" />
-          <h3>Snake Game</h3>
-          <p>
-            Controle uma cobra faminta e tente comer o máximo de frutas possível
-            sem bater nas paredes ou em si mesma! Até onde você consegue chegar?
-          </p>
-          <a
-            href="https://rafaelcostasilva1501.github.io/Snake-Game/"
-            target="_self"
-            class="play-button"
-            >Jogue Agora</a
-          >
-        </div>
-
-        <!-- Game Card 2 -->
-        <div class="game-card">
-          <img src="img/paint-logo.jpg" alt="Paint Banner" />
-          <h3>Paint</h3>
-          <p>
-            Libere sua criatividade! Desenhe, pinte e crie obras de arte
-            digitais usando uma paleta de cores intuitiva e ferramentas simples
-            de pintura.
-          </p>
-          <a
-            href="https://rafaelcostasilva1501.github.io/Paint/"
-            target="_self"
-            class="play-button"
-            >Jogue Agora</a
-          >
-        </div>
-
-        <!-- Game Card 3 -->
-        <div class="game-card">
-          <img src="img/pixelart-logo.webp" alt="Pixelart Banner" />
-          <h3>Pixelart</h3>
-          <p>
-            Crie incríveis obras em pixel! Use uma grade de pixels para projetar
-            imagens no estilo retrô, como personagens, objetos e muito mais.
-          </p>
-          <a
-            href="https://rafaelcostasilva1501.github.io/Pixelart/"
-            target="_blank"
-            class="play-button"
-            >Jogue Agora</a
-          >
-        </div>
-
-        <!-- Game Card 4 -->
-        <div class="game-card">
-          <img src="img/piano-logo.webp" alt="Game 3" />
-          <h3>Piano Virtual</h3>
-          <p>
-            Transforme seu teclado em um piano! Toque músicas, experimente novas
-            melodias e divirta-se aprendendo com este piano digital.
-          </p>
-          <a
-            href="https://github.com/seu-usuario/game3"
-            target="_blank"
-            class="play-button"
-            >Jogue Agora</a
-          >
-        </div>
-      </div>
+      <div class="cards-container"></div>
     </section>
 
     <footer>
@@ -97,5 +45,7 @@
         <p>Email: rafael1501.contato@gmail.com</p>
       </section>
     </footer>
+
+    <script src="scripts/script.js"></script>
   </body>
 </html>
