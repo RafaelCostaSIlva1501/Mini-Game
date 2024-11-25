@@ -20,7 +20,7 @@ const cards = [
     banner: ["img/space-invaders-logo.webp", ""],
     description:
       "Space Invaders é um jogo onde você controla uma nave solitária em meio ao espaço, enfrentando ondas de criaturas que descem em ataques cada vez mais intensos.",
-    link: "",
+    link: "https://manualdodev.github.io/space-invaders/",
   },
 
   {
@@ -52,7 +52,7 @@ const cards = [
     banner: ["img/piano-logo.webp", "Piano Banner"],
     description:
       "Transforme seu teclado em um piano! Toque músicas, experimente novas melodias e divirta-se aprendendo com este piano digital.",
-    link: "",
+    link: "https://rafaelcostasilva1501.github.io/Piano-Virtual/",
   },
 ];
 
