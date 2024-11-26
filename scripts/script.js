@@ -47,13 +47,13 @@ const cards = [
     link: "https://rafaelcostasilva1501.github.io/Paint/",
   },
 
-  {
+  /*{
     name: "Piano",
     banner: ["img/piano-logo.webp", "Piano Banner"],
     description:
       "Transforme seu teclado em um piano! Toque músicas, experimente novas melodias e divirta-se aprendendo com este piano digital.",
     link: "https://rafaelcostasilva1501.github.io/Piano/",
-  },
+  },*/
 ];
 
 const createElement = (tag) => {
