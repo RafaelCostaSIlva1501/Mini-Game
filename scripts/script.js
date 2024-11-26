@@ -15,6 +15,7 @@ btnMenu.forEach((e) => {
 const container = document.querySelector(".cards-container");
 
 const cards = [
+  /*
   {
     name: "Space Invaders",
     banner: ["img/space-invaders-logo.webp", ""],
@@ -22,6 +23,7 @@ const cards = [
       "Space Invaders é um jogo onde você controla uma nave solitária em meio ao espaço, enfrentando ondas de criaturas que descem em ataques cada vez mais intensos.",
     link: "https://manualdodev.github.io/space-invaders/",
   },
+  */
 
   {
     name: "Snake Game",
@@ -47,13 +49,13 @@ const cards = [
     link: "https://rafaelcostasilva1501.github.io/Paint/",
   },
 
-  /*{
+  {
     name: "Piano",
     banner: ["img/piano-logo.webp", "Piano Banner"],
     description:
       "Transforme seu teclado em um piano! Toque músicas, experimente novas melodias e divirta-se aprendendo com este piano digital.",
     link: "https://rafaelcostasilva1501.github.io/Piano/",
-  },*/
+  },
 ];
 
 const createElement = (tag) => {
