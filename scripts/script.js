@@ -8,7 +8,8 @@ btnMenu.forEach((e) => {
     menuON = !menuON;
 
     menu.style.width = menuON ? "220px" : "0px";
-    menu.style.padding = menuON ? "20px" : "0px";
+    menu.style.padding = menuON ? "20px 20px" : " 20px 0px";
+    menu.style.borderLeft = menuON ? "1px solid #e0e0e0" : "none";
   });
 });
 
