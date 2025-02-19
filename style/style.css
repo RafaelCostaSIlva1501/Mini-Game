@@ -104,14 +104,18 @@ header button:hover {
 .game-card {
   display: flex;
   flex-direction: column;
+
+  width: min-content;
+
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px #0000001a;
-  width: 90%;
-  max-width: 500px;
+
   margin: 15px;
   overflow: hidden;
   transition: transform 0.3s;
+
+  border: 1px solid red;
 }
 
 .game-card:hover {
@@ -119,12 +123,12 @@ header button:hover {
 }
 
 .game-card img {
-  width: 100%;
+  width: 200px;
 }
 
 .game-card h3 {
   margin: 15px 0;
-  font-size: 24px;
+  font-size: 1rem;
   color: #333;
 }
 
@@ -151,16 +155,22 @@ header button:hover {
 }
 
 .advice {
-  display: block;
-  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 50%;
   margin: 20px auto;
   padding: 15px 20px;
 
-  background-color: #5218d82a; 
-  border-left: 5px solid #5218d8; 
-  border-radius: 8px; 
+  background-color: #d0c1f1;
+  border-left: 5px solid #5218d8;
+  border-radius: 8px;
 
   box-shadow: 0 2px 5px #000000ab;
+
+  z-index: 999;
 }
 
 .advice button {
@@ -171,7 +181,11 @@ header button:hover {
   margin-left: auto;
   padding: 5px 10px;
 
-  background: linear-gradient(135deg, #5218d8, #622fda); /* Gradiente de cores */
+  background: linear-gradient(
+    135deg,
+    #5218d8,
+    #622fda
+  ); /* Gradiente de cores */
   color: white; /* Texto branco para contraste */
   font-weight: bold;
   font-size: 16px;
@@ -191,9 +205,9 @@ header button:hover {
 }
 
 .advice p {
-  color: #333; 
-  font-size: 1rem; 
-  line-height: 1.6; 
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Rodapé */
