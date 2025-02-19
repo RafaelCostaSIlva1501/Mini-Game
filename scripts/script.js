@@ -13,6 +13,8 @@ btnMenu.forEach((e) => {
   });
 });
 
+/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+
 const container = document.querySelector(".cards-container");
 
 const cards = [
@@ -88,4 +90,13 @@ cards.forEach((cards) => {
   card.appendChild(description);
   card.appendChild(link);
   container.appendChild(card);
+});
+
+/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+
+const advice = document.querySelector(".advice");
+const closeAdvice = document.querySelector(".close-advice");
+
+closeAdvice.addEventListener("click", () => {
+  advice.style.display = "none";
 });
