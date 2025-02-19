@@ -18,22 +18,14 @@ btnMenu.forEach((e) => {
 const container = document.querySelector(".cards-container");
 
 const cards = [
-  /*
-  {
-    name: "Space Invaders",
-    banner: ["img/space-invaders-logo.webp", ""],
-    description:
-      "Space Invaders é um jogo onde você controla uma nave solitária em meio ao espaço, enfrentando ondas de criaturas que descem em ataques cada vez mais intensos.",
-    link: "https://manualdodev.github.io/space-invaders/",
-  },
-  */
-
   {
     name: "Snake Game",
     banner: ["img/snake-logo.webp", "Snake Game Banner"],
     description:
       "Controle uma cobra faminta e tente comer o máximo de frutas possível sem bater nas paredes ou em si mesma! Até onde você consegue chegar?",
     link: "https://rafaelcostasilva1501.github.io/Snake-Game/",
+    github: "https://github.com/RafaelCostaSIlva1501/Snake-Game",
+    tech: ["js", "html5", "css3"],
   },
 
   {
@@ -42,6 +34,8 @@ const cards = [
     description:
       "Crie incríveis obras em pixel! Use uma grade de pixels para projetar imagens no estilo retrô, como personagens, objetos e muito mais.",
     link: "https://rafaelcostasilva1501.github.io/Pixelart/",
+    github: "https://github.com/RafaelCostaSIlva1501/Pixelart",
+    tech: ["js", "html5", "css3"],
   },
 
   {
@@ -50,6 +44,8 @@ const cards = [
     description:
       "Libere sua criatividade! Desenhe, pinte e crie obras de arte digitais usando uma paleta de cores intuitiva e ferramentas simples de pintura.",
     link: "https://rafaelcostasilva1501.github.io/Paint/",
+    github: "https://github.com/RafaelCostaSIlva1501/Paint",
+    tech: ["js", "html5", "css3"],
   },
 
   {
@@ -58,6 +54,28 @@ const cards = [
     description:
       "Transforme seu teclado em um piano! Toque músicas, experimente novas melodias e divirta-se aprendendo com este piano digital.",
     link: "https://rafaelcostasilva1501.github.io/Piano/",
+    github: "https://github.com/RafaelCostaSIlva1501/Piano",
+    tech: ["js", "html5", "css3"],
+  },
+
+  {
+    name: "Space Invaders",
+    banner: ["img/space-invaders-logo.jpg", "Space Invaders Banner"],
+    description:
+      "Space Invaders é um jogo onde você controla uma nave solitária em meio ao espaço, enfrentando ondas de criaturas que descem em ataques cada vez mais intensos.",
+    link: "",
+    github: "",
+    tech: ["js", "html5", "css3"],
+  },
+
+  {
+    name: "Brick Breaker",
+    banner: ["img/brick-breaker-logo.jpg", "Brick Breaker Banner"],
+    description:
+      "",
+    link: "",
+    github: "",
+    tech: ["js", "html5", "css3"],
   },
 ];
 
@@ -67,6 +85,9 @@ const createElement = (tag) => {
 };
 
 cards.forEach((cards) => {
+  const link = createElement("a")
+  link.href = cards.link
+
   const card = createElement("div");
   card.className = "game-card";
 
@@ -77,24 +98,25 @@ cards.forEach((cards) => {
   const title = createElement("h3");
   title.innerText = cards.name;
 
-  const description = createElement("p");
-  description.innerText = cards.description;
+  const techContainer = createElement("div");
+  cards.tech.forEach((e) => {
+    const tech = createElement("img");
+    tech.src = `img/tech/${e}.png`;
+    techContainer.appendChild(tech);
+  });
 
-  const link = createElement("a");
-  link.innerText = "Jogue Agora";
-  link.href = cards.link;
-  link.target = "_self";
 
   card.appendChild(banner);
   card.appendChild(title);
-  card.appendChild(description);
-  card.appendChild(link);
-  container.appendChild(card);
+  card.appendChild(techContainer);
+  link.appendChild(card)
+  container.appendChild(link);
 });
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 
 const advice = document.querySelector(".advice");
+
 const closeAdvice = document.querySelector(".close-advice");
 
 closeAdvice.addEventListener("click", () => {

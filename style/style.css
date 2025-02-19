@@ -6,6 +6,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Estilo do cabeçalho */
 header {
   display: flex;
@@ -91,8 +95,11 @@ header button:hover {
 /* Seção de Games */
 #games {
   padding: 20px;
-  background-color: #f5f5f5;
-  text-align: center;
+
+  background: url(../img/background.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .cards-container {
@@ -104,22 +111,23 @@ header button:hover {
 .game-card {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 
   width: min-content;
+  margin: 15px 0px;
+  padding: 5px;
 
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px #0000001a;
 
-  margin: 15px;
   overflow: hidden;
-  transition: transform 0.3s;
-
-  border: 1px solid red;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .game-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .game-card img {
@@ -127,31 +135,17 @@ header button:hover {
 }
 
 .game-card h3 {
-  margin: 15px 0;
   font-size: 1rem;
   color: #333;
 }
 
-.game-card p {
-  color: #666;
-  margin: 0 15px 15px;
+.game-card div {
+  display: flex;
+  gap: 5px;
 }
 
-.game-card a {
-  display: inline-block;
-  margin: auto auto 15px auto;
-  padding: 10px 20px;
-  background-color: #5218d8;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: all 0.3s;
-  cursor: pointer;
-  width: max-content;
-}
-
-.game-card a:hover {
-  background-color: #5b30c0;
+.game-card div > img {
+  width: 20px;
 }
 
 .advice {
@@ -160,8 +154,8 @@ header button:hover {
   top: 50%;
   transform: translate(-50%, -50%);
 
-  width: 50%;
-  margin: 20px auto;
+  width: 80%;
+  height: min-content;
   padding: 15px 20px;
 
   background-color: #d0c1f1;
@@ -206,7 +200,7 @@ header button:hover {
 
 .advice p {
   color: #333;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
