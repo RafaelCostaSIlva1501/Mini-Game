@@ -22,7 +22,7 @@ const cards = [
     name: "Snake Game",
     banner: ["img/snake-logo.webp", "Snake Game Banner"],
     description:
-      "Controle uma cobra faminta e tente comer o máximo de frutas possível sem bater nas paredes ou em si mesma! Até onde você consegue chegar?",
+      "Controle a cobra, coma frutas e evite bater em paredes ou em si mesma para alcançar a maior pontuação!",
     link: "https://rafaelcostasilva1501.github.io/Snake-Game/",
     github: "https://github.com/RafaelCostaSIlva1501/Snake-Game",
     tech: ["js", "html5", "css3"],
@@ -32,7 +32,7 @@ const cards = [
     name: "Pixelart",
     banner: ["img/pixelart-logo.webp", "Pixelart Banner"],
     description:
-      "Crie incríveis obras em pixel! Use uma grade de pixels para projetar imagens no estilo retrô, como personagens, objetos e muito mais.",
+      "Crie arte retrô em pixel usando uma grade para projetar personagens, objetos e muito mais!",
     link: "https://rafaelcostasilva1501.github.io/Pixelart/",
     github: "https://github.com/RafaelCostaSIlva1501/Pixelart",
     tech: ["js", "html5", "css3"],
@@ -42,7 +42,7 @@ const cards = [
     name: "Paint",
     banner: ["img/paint-logo.jpg", "Paint Banner"],
     description:
-      "Libere sua criatividade! Desenhe, pinte e crie obras de arte digitais usando uma paleta de cores intuitiva e ferramentas simples de pintura.",
+      "Desenhe e pinte com facilidade, criando obras digitais com uma paleta intuitiva e ferramentas simples!",
     link: "https://rafaelcostasilva1501.github.io/Paint/",
     github: "https://github.com/RafaelCostaSIlva1501/Paint",
     tech: ["js", "html5", "css3"],
@@ -52,7 +52,7 @@ const cards = [
     name: "Piano",
     banner: ["img/piano-logo.webp", "Piano Banner"],
     description:
-      "Transforme seu teclado em um piano! Toque músicas, experimente novas melodias e divirta-se aprendendo com este piano digital.",
+      "Transforme seu teclado em um piano e toque músicas enquanto explora novas melodias de forma divertida!",
     link: "https://rafaelcostasilva1501.github.io/Piano/",
     github: "https://github.com/RafaelCostaSIlva1501/Piano",
     tech: ["js", "html5", "css3"],
@@ -62,7 +62,7 @@ const cards = [
     name: "Space Invaders",
     banner: ["img/space-invaders-logo.jpg", "Space Invaders Banner"],
     description:
-      "Space Invaders é um jogo onde você controla uma nave solitária em meio ao espaço, enfrentando ondas de criaturas que descem em ataques cada vez mais intensos.",
+      "Controle sua nave e enfrente ondas de inimigos espaciais em batalhas cada vez mais desafiadoras!",
     link: "",
     github: "",
     tech: ["js", "html5", "css3"],
@@ -71,8 +71,7 @@ const cards = [
   {
     name: "Brick Breaker",
     banner: ["img/brick-breaker-logo.jpg", "Brick Breaker Banner"],
-    description:
-      "",
+    description: "Quebre os blocos com uma bola enquanto controla a barra para evitar que ela caia, neste clássico desafio de reflexos!",
     link: "",
     github: "",
     tech: ["js", "html5", "css3"],
@@ -85,8 +84,8 @@ const createElement = (tag) => {
 };
 
 cards.forEach((cards) => {
-  const link = createElement("a")
-  link.href = cards.link
+  const link = createElement("a");
+  link.href = cards.link;
 
   const card = createElement("div");
   card.className = "game-card";
@@ -95,22 +94,25 @@ cards.forEach((cards) => {
   banner.src = cards.banner[0];
   banner.alt = cards.banner[1];
 
+  const div = createElement("div");
+
   const title = createElement("h3");
   title.innerText = cards.name;
 
-  const techContainer = createElement("div");
+  const description = createElement("p");
+  description.innerText = cards.description;
+
+  container.appendChild(link);
+  link.appendChild(card);
+  card.appendChild(banner);
+  card.appendChild(div);
+  div.appendChild(title);
   cards.tech.forEach((e) => {
     const tech = createElement("img");
     tech.src = `img/tech/${e}.png`;
-    techContainer.appendChild(tech);
+    div.appendChild(tech);
   });
-
-
-  card.appendChild(banner);
-  card.appendChild(title);
-  card.appendChild(techContainer);
-  link.appendChild(card)
-  container.appendChild(link);
+  card.appendChild(description);
 });
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/

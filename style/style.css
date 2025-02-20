@@ -6,10 +6,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-a {
-  text-decoration: none;
-}
-
 /* Estilo do cabeçalho */
 header {
   display: flex;
@@ -92,61 +88,7 @@ header button:hover {
   transform: scale(1.2);
 }
 
-/* Seção de Games */
-#games {
-  padding: 20px;
-
-  background: url(../img/background.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.cards-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.game-card {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
-  width: min-content;
-  margin: 15px 0px;
-  padding: 5px;
-
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px #0000001a;
-
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.game-card:hover {
-  transform: scale(1.03);
-}
-
-.game-card img {
-  width: 200px;
-}
-
-.game-card h3 {
-  font-size: 1rem;
-  color: #333;
-}
-
-.game-card div {
-  display: flex;
-  gap: 5px;
-}
-
-.game-card div > img {
-  width: 20px;
-}
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
 .advice {
   position: absolute;
@@ -204,6 +146,162 @@ header button:hover {
   line-height: 1.6;
 }
 
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+.highlight {
+  padding: 20px;
+
+  background-color: #1c2733;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.highlight img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+
+  margin: 0px auto;
+
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.highlight > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.highlight > div > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.highlight div h2 {
+  color: #f0f0f0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.highlight div > img {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 4px;
+
+  background-color: #2a2a3b;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.highlight div p {
+  color: #b8c0cc;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.highlight div > a {
+  display: inline-block;
+  padding: 10px 16px;
+
+  background-color: #2a2a3b;
+  border: 2px solid #444;
+  border-radius: 12px;
+
+  color: #f0f0f0;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+
+  transition: all 0.3s ease;
+}
+
+.highlight div > a:hover {
+  background-color: #ed9221;
+  border-color: #e87219;
+  box-shadow: 0px 0px 20px #ed9221cc;
+
+  transform: scale(1.01);
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Seção de Games */
+#games {
+  padding: 20px;
+
+  background: url(../img/background.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.cards-container a {
+  text-decoration: none;
+}
+
+.game-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+
+  width: min-content;
+  margin: 15px 0px;
+  padding: 5px;
+
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px #0000001a;
+
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.game-card:hover {
+  transform: scale(1.03);
+}
+
+.game-card img {
+  width: 200px;
+}
+
+.game-card div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.game-card div > img {
+  width: 22px;
+  height: min-content;
+  padding: 3px;
+
+  background-color: #e9e6e6bd;
+  border-radius: 3px;
+  object-fit: contain;
+}
+
+.game-card h3 {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.game-card p {
+  color: #333;
+  font-size: 0.7rem;
+}
+
 /* Rodapé */
 footer {
   background-color: #121212;
@@ -243,5 +341,9 @@ footer {
 
   .button-menu {
     display: none;
+  }
+
+  .highlight {
+    display: flex;
   }
 }
