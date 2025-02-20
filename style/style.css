@@ -208,7 +208,10 @@ header button:hover {
 }
 
 .highlight div > a {
-  display: inline-block;
+  display: block;
+
+  width: 80%;
+  margin: 0px auto;
   padding: 10px 16px;
 
   background-color: #2a2a3b;
@@ -261,6 +264,7 @@ header button:hover {
   gap: 5px;
 
   width: min-content;
+  height: 225px;
   margin: 15px 0px;
   padding: 5px;
 

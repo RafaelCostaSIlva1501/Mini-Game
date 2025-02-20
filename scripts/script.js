@@ -61,20 +61,23 @@ const cards = [
   {
     name: "Space Invaders",
     banner: ["img/space-invaders-logo.jpg", "Space Invaders Banner"],
-    description:
-      "Controle sua nave e enfrente ondas de inimigos espaciais em batalhas cada vez mais desafiadoras!",
+    description: "- PROJETO EM DESENVOLVIMENTO -",
     link: "",
     github: "",
     tech: ["js", "html5", "css3"],
+
+    // Controle sua nave e enfrente ondas de inimigos espaciais em batalhas cada vez mais desafiadoras!
   },
 
   {
     name: "Brick Breaker",
     banner: ["img/brick-breaker-logo.jpg", "Brick Breaker Banner"],
-    description: "Quebre os blocos com uma bola enquanto controla a barra para evitar que ela caia, neste clássico desafio de reflexos!",
+    description: "- PROJETO EM DESENVOLVIMENTO -",
     link: "",
     github: "",
     tech: ["js", "html5", "css3"],
+
+    // Quebre os blocos com uma bola enquanto controla a barra para evitar que ela caia, neste clássico desafio de reflexos!
   },
 ];
 
