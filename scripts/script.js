@@ -120,10 +120,20 @@ cards.forEach((cards) => {
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 
-const advice = document.querySelector(".advice");
+document.addEventListener("DOMContentLoaded", () => {
+  const advice = document.querySelector(".advice");
+  const closeAdvice = document.querySelector(".close-advice");
 
-const closeAdvice = document.querySelector(".close-advice");
+  const isAdviceClosed = localStorage.getItem("adviceClosed");
 
-closeAdvice.addEventListener("click", () => {
-  advice.style.display = "none";
+  if (!isAdviceClosed) {
+    advice.style.display = "block";
+  }
+
+  closeAdvice.addEventListener("click", () => {
+    advice.style.display = "none";
+    localStorage.setItem("adviceClosed", "true");
+  });
 });
+
+/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
