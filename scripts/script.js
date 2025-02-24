@@ -1,121 +1,72 @@
-const btnMenu = document.querySelectorAll(".button-menu");
-const menu = document.querySelector(".menu");
+import { DOM } from "./DOM.js";
+import { cards } from "./cards.js";
 
-let menuON = false;
+let menuON = false; // Flag que controla o menu
 
-btnMenu.forEach((e) => {
-  e.addEventListener("click", () => {
+DOM.buttonMenu.forEach((button) => {
+  button.addEventListener("click", () => {
     menuON = !menuON;
 
-    menu.style.width = menuON ? "220px" : "0px";
-    menu.style.padding = menuON ? "20px 20px" : " 20px 0px";
-    menu.style.borderLeft = menuON ? "1px solid #e0e0e0" : "none";
+    DOM.menu.style.width = menuON ? "220px" : "0px";
+    DOM.menu.style.padding = menuON ? "20px 20px" : " 20px 0px";
   });
 });
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
-
-const container = document.querySelector(".cards-container");
-
-const cards = [
-  {
-    name: "Snake Game",
-    banner: ["img/snake-logo.webp", "Snake Game Banner"],
-    description:
-      "Controle a cobra, coma frutas e evite bater em paredes ou em si mesma para alcançar a maior pontuação!",
-    link: "https://rafaelcostasilva1501.github.io/Snake-Game/",
-    github: "https://github.com/RafaelCostaSIlva1501/Snake-Game",
-    tech: ["js", "html5", "css3"],
-  },
-
-  {
-    name: "Pixelart",
-    banner: ["img/pixelart-logo.webp", "Pixelart Banner"],
-    description:
-      "Crie arte retrô em pixel usando uma grade para projetar personagens, objetos e muito mais!",
-    link: "https://rafaelcostasilva1501.github.io/Pixelart/",
-    github: "https://github.com/RafaelCostaSIlva1501/Pixelart",
-    tech: ["js", "html5", "css3"],
-  },
-
-  {
-    name: "Paint",
-    banner: ["img/paint-logo.jpg", "Paint Banner"],
-    description:
-      "Desenhe e pinte com facilidade, criando obras digitais com uma paleta intuitiva e ferramentas simples!",
-    link: "https://rafaelcostasilva1501.github.io/Paint/",
-    github: "https://github.com/RafaelCostaSIlva1501/Paint",
-    tech: ["js", "html5", "css3"],
-  },
-
-  {
-    name: "Piano",
-    banner: ["img/piano-logo.webp", "Piano Banner"],
-    description:
-      "Transforme seu teclado em um piano e toque músicas enquanto explora novas melodias de forma divertida!",
-    link: "https://rafaelcostasilva1501.github.io/Piano/",
-    github: "https://github.com/RafaelCostaSIlva1501/Piano",
-    tech: ["js", "html5", "css3"],
-  },
-
-  {
-    name: "Space Invaders",
-    banner: ["img/space-invaders-logo.jpg", "Space Invaders Banner"],
-    description: "- PROJETO EM DESENVOLVIMENTO -",
-    link: "",
-    github: "",
-    tech: ["js", "html5", "css3"],
-
-    // Controle sua nave e enfrente ondas de inimigos espaciais em batalhas cada vez mais desafiadoras!
-  },
-
-  {
-    name: "Brick Breaker",
-    banner: ["img/brick-breaker-logo.jpg", "Brick Breaker Banner"],
-    description: "- PROJETO EM DESENVOLVIMENTO -",
-    link: "",
-    github: "",
-    tech: ["js", "html5", "css3"],
-
-    // Quebre os blocos com uma bola enquanto controla a barra para evitar que ela caia, neste clássico desafio de reflexos!
-  },
-];
 
 const createElement = (tag) => {
   const element = document.createElement(tag);
   return element;
 };
 
-cards.forEach((cards) => {
-  const link = createElement("a");
-  link.href = cards.link;
+const createCard = (cardData) => {
+  const link = createElement("a"); // Cria a tag <a>
+  
+  // Verifica se há uma URL e se não houver, previne o comportamento do link
+  if (!cardData.link) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Previne o comportamento de navegação
+      console.log("Link não tem URL, navegação prevenido");
+    });
+  } else {
+    link.href = cardData.link; // Atribui a URL à tag <a>
+  }
 
-  const card = createElement("div");
-  card.className = "game-card";
+  const card = createElement("div"); // Cria a tag <div>
+  card.className = "game-card"; // Atribui uma classe à tag <div>
 
-  const banner = createElement("img");
-  banner.src = cards.banner[0];
-  banner.alt = cards.banner[1];
+  const banner = createElement("img"); // Cria a tag <img>
+  banner.src = cardData.banner[0]; // Define a imagem do banner
+  banner.alt = cardData.banner[1]; // Define o texto alternativo (acessibilidade)
 
-  const div = createElement("div");
+  const div = createElement("div"); // Cria uma <div> para armazenar o título e os ícones das tecnologias
 
-  const title = createElement("h3");
-  title.innerText = cards.name;
+  const title = createElement("h3"); // Cria a tag <h3> para o título do card
+  title.innerText = cardData.name; // Define o nome do card como conteúdo do <h3>
 
-  const description = createElement("p");
-  description.innerText = cards.description;
+  const description = createElement("p"); // Cria a tag <p> para a descrição do card
+  description.innerText = cardData.description; // Define a descrição do card
 
-  container.appendChild(link);
-  link.appendChild(card);
-  card.appendChild(banner);
-  card.appendChild(div);
-  div.appendChild(title);
-  cards.tech.forEach((e) => {
-    const tech = createElement("img");
-    tech.src = `img/tech/${e}.png`;
-    div.appendChild(tech);
+  // Percorre o array de tecnologias e cria um ícone <img> para cada uma
+  cardData.tech.forEach((techName) => {
+    const tech = createElement("img"); // Cria a tag <img> para representar a tecnologia
+    tech.src = `img/tech/${techName}.png`; // Define o caminho da imagem da tecnologia
+    div.appendChild(tech); // Adiciona o ícone dentro da <div> de informações do card
   });
-  card.appendChild(description);
+
+  // Monta a estrutura do card adicionando os elementos na hierarquia correta
+  div.appendChild(title); // Adiciona o título dentro da div de informações
+  card.appendChild(banner); // Adiciona a imagem/banner dentro do card
+  card.appendChild(div); // Adiciona a div com título e tecnologias ao card
+  card.appendChild(description); // Adiciona a descrição ao card
+  link.appendChild(card); // Adiciona o card dentro da tag <a>
+
+  return link; // Retorna o elemento <a> contendo todo o card estruturado
+};
+
+// Adicionar os cards ao container
+cards.forEach((cardData) => {
+  DOM.container.appendChild(createCard(cardData));
 });
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
