@@ -3,6 +3,7 @@ import { cards } from "./cards.js";
 
 let menuON = false; // Flag que controla o menu
 
+// Função que liga e desliga (abre e fecha) o MENU
 DOM.buttonMenu.forEach((button) => {
   button.addEventListener("click", () => {
     menuON = !menuON;
@@ -21,7 +22,7 @@ const createElement = (tag) => {
 
 const createCard = (cardData) => {
   const link = createElement("a"); // Cria a tag <a>
-  
+
   // Verifica se há uma URL e se não houver, previne o comportamento do link
   if (!cardData.link) {
     link.addEventListener("click", (event) => {
@@ -71,20 +72,16 @@ cards.forEach((cardData) => {
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 
+// Verifica se a mensagem de aviso já foi mostrada anteriormente
 document.addEventListener("DOMContentLoaded", () => {
-  const advice = document.querySelector(".advice");
-  const closeAdvice = document.querySelector(".close-advice");
-
   const isAdviceClosed = localStorage.getItem("adviceClosed");
 
   if (!isAdviceClosed) {
     advice.style.display = "block";
   }
 
-  closeAdvice.addEventListener("click", () => {
-    advice.style.display = "none";
+  DOM.closeAdvice.addEventListener("click", () => {
+    DOM.advice.style.display = "none";
     localStorage.setItem("adviceClosed", "true");
   });
 });
-
-/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
