@@ -20,6 +20,36 @@ const createElement = (tag) => {
   return element;
 };
 
+cards.forEach((e) => {
+  const a = createElement("a");
+
+  if (!e.link) {
+    a.addEventListener("click", (event) => {
+      event.preventDefault();
+    });
+  } else {
+    a.href = e.link;
+  }
+
+  const article = createElement("article");
+
+  const img = createElement("img");
+  img.src = e.banner[0];
+
+  const h3 = createElement("h3");
+  h3.textContent = e.name;
+
+  const p = createElement("p");
+  p.textContent = e.description
+
+  DOM.container.appendChild(a);
+  a.appendChild(article);
+  article.appendChild(img);
+  article.appendChild(h3);
+  article.appendChild(p);
+});
+
+/*
 const createCard = (cardData) => {
   const link = createElement("a"); // Cria a tag <a>
 
@@ -69,6 +99,7 @@ const createCard = (cardData) => {
 cards.forEach((cardData) => {
   DOM.container.appendChild(createCard(cardData));
 });
+*/
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 

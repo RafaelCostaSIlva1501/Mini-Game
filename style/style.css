@@ -241,6 +241,10 @@ header button:hover {
 
 /* Seção de Games */
 #games {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
   padding: 20px;
 
   background: url(../img/background.jpg);
@@ -249,29 +253,25 @@ header button:hover {
   background-size: cover;
 }
 
-.cards-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.cards-container a {
+#games a {
+  width: 80%;
+  max-width: 400px;
+  height: min-content;
+  margin: 0 auto;
   text-decoration: none;
 }
 
-.game-card {
+#games article {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 5px;
 
-  width: min-content;
-  height: 225px;
+  width: 100%;
   margin: 15px 0px;
   padding: 5px;
 
   background-color: white;
-  border-radius: 5px;
+  border-radius: 2px;
   box-shadow: 0 4px 8px #0000001a;
 
   overflow: hidden;
@@ -279,21 +279,26 @@ header button:hover {
   transition: all 0.3s;
 }
 
-.game-card:hover {
+article:hover {
   transform: scale(1.03);
 }
 
-.game-card img {
-  width: 200px;
+article img {
+  width: 100%;
 }
 
-.game-card div {
+article div {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.game-card div > img {
+article h3 {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+article div > img {
   width: 22px;
   height: min-content;
   padding: 3px;
@@ -303,15 +308,12 @@ header button:hover {
   object-fit: contain;
 }
 
-.game-card h3 {
-  font-size: 0.9rem;
-  color: #333;
-}
-
-.game-card p {
+article p {
   color: #333;
   font-size: 0.7rem;
 }
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* Rodapé */
 footer {
@@ -320,6 +322,8 @@ footer {
   padding: 30px;
   text-align: center;
 }
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width: 768px) {
   header button {
