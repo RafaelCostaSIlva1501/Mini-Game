@@ -20,18 +20,11 @@ const createElement = (tag) => {
   return element;
 };
 
-cards.forEach((e) => {
-  const a = createElement("a");
-
-  if (!e.link) {
-    a.addEventListener("click", (event) => {
-      event.preventDefault();
-    });
-  } else {
-    a.href = e.link;
-  }
-
+cards.forEach((e, i) => {
   const article = createElement("article");
+  article.addEventListener("click", () => {
+    overview(i);
+  });
 
   const img = createElement("img");
   img.src = e.banner[0];
@@ -40,66 +33,67 @@ cards.forEach((e) => {
   h3.textContent = e.name;
 
   const p = createElement("p");
-  p.textContent = e.description
+  p.textContent = e.description;
 
-  DOM.container.appendChild(a);
-  a.appendChild(article);
+  DOM.games.appendChild(article);
+
   article.appendChild(img);
   article.appendChild(h3);
   article.appendChild(p);
 });
 
-/*
-const createCard = (cardData) => {
-  const link = createElement("a"); // Cria a tag <a>
+const overview = (index) => {
+  DOM.main.style.display = "none";
+  DOM.overview.style.display = "flex";
 
-  // Verifica se há uma URL e se não houver, previne o comportamento do link
-  if (!cardData.link) {
-    link.addEventListener("click", (event) => {
-      event.preventDefault(); // Previne o comportamento de navegação
-      console.log("Link não tem URL, navegação prevenido");
-    });
-  } else {
-    link.href = cardData.link; // Atribui a URL à tag <a>
-  }
+  // Info
+  DOM.portrait.src = cards[index].portrait[0];
+  cards[index].tags.forEach((e) => {
+    const p = createElement("p");
+    p.textContent = e;
 
-  const card = createElement("div"); // Cria a tag <div>
-  card.className = "game-card"; // Atribui uma classe à tag <div>
-
-  const banner = createElement("img"); // Cria a tag <img>
-  banner.src = cardData.banner[0]; // Define a imagem do banner
-  banner.alt = cardData.banner[1]; // Define o texto alternativo (acessibilidade)
-
-  const div = createElement("div"); // Cria uma <div> para armazenar o título e os ícones das tecnologias
-
-  const title = createElement("h3"); // Cria a tag <h3> para o título do card
-  title.innerText = cardData.name; // Define o nome do card como conteúdo do <h3>
-
-  const description = createElement("p"); // Cria a tag <p> para a descrição do card
-  description.innerText = cardData.description; // Define a descrição do card
-
-  // Percorre o array de tecnologias e cria um ícone <img> para cada uma
-  cardData.tech.forEach((techName) => {
-    const tech = createElement("img"); // Cria a tag <img> para representar a tecnologia
-    tech.src = `img/tech/${techName}.png`; // Define o caminho da imagem da tecnologia
-    div.appendChild(tech); // Adiciona o ícone dentro da <div> de informações do card
+    DOM.tags.appendChild(p);
   });
 
-  // Monta a estrutura do card adicionando os elementos na hierarquia correta
-  div.appendChild(title); // Adiciona o título dentro da div de informações
-  card.appendChild(banner); // Adiciona a imagem/banner dentro do card
-  card.appendChild(div); // Adiciona a div com título e tecnologias ao card
-  card.appendChild(description); // Adiciona a descrição ao card
-  link.appendChild(card); // Adiciona o card dentro da tag <a>
+  // Sobre
+  DOM.overview.style.backgroundImage = `url("${cards[index].banner[0]}")`;
+  DOM.banner.style.backgroundImage = `url("${cards[index].banner[0]}")`;
+  DOM.link.href = cards[index].link;
+  DOM.description.textContent = cards[index].description;
 
-  return link; // Retorna o elemento <a> contendo todo o card estruturado
+  //Atualizações
+  cards[index].update.forEach((e) => {
+    const details = createElement("details");
+
+    const summary = createElement("summary");
+    summary.textContent = `Atualização de ${e.date}`;
+
+    DOM.updates.appendChild(details);
+    details.appendChild(summary);
+
+    e.updates.forEach((update) => {
+      const h2 = createElement("h2");
+      h2.textContent = update.title;
+      details.appendChild(h2);
+
+      update.items.forEach((item) => {
+        const p = createElement("p");
+        p.textContent = item;
+        details.appendChild(p);
+      });
+    });
+  });
 };
 
-// Adicionar os cards ao container
-cards.forEach((cardData) => {
-  DOM.container.appendChild(createCard(cardData));
+DOM.btnDetails.forEach((e, i) => {
+  e.addEventListener("click", () => {
+    DOM.details.forEach((e) => {
+      e.style.display = "none";
+    });
+
+    DOM.details[i].style.display = "flex";
+  });
 });
-*/
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
 

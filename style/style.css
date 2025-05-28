@@ -4,10 +4,32 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  transition: all 0.3s;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
 }
 
 /* Estilo do cabeçalho */
-header {
+body > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,17 +38,17 @@ header {
   background-color: #121212;
 }
 
-header .logo h1 {
+body > header .logo h1 {
   color: #fff;
   font-weight: 600;
   font-size: 28px;
 }
 
-header .logo span {
+body > header .logo span {
   color: #5218d8;
 }
 
-header nav {
+body > header nav {
   position: fixed;
   top: 0;
   right: 0;
@@ -46,7 +68,7 @@ header nav {
   z-index: 100;
 }
 
-header nav a {
+body > header nav a {
   width: min-content;
   padding: 5px 7px;
 
@@ -59,18 +81,18 @@ header nav a {
   transition: all 0.3s;
 }
 
-header nav a:hover {
+body > header nav a:hover {
   background-color: #f5f5f5;
   color: #5218d8;
 }
 
-header nav button {
+body > header nav button {
   display: flex;
   width: max-content;
   margin-left: auto;
 }
 
-header button {
+body > header button {
   display: flex;
 
   background: none;
@@ -84,7 +106,7 @@ header button {
   transition: all 0.3s;
 }
 
-header button:hover {
+body > header button:hover {
   transform: scale(1.2);
 }
 
@@ -150,100 +172,10 @@ header button:hover {
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
-.highlight {
-  padding: 20px;
-
-  background-color: #1c2733;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-.highlight img {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-
-  margin: 0px auto;
-
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.highlight > div {
+main {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-}
-
-.highlight > div > div {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.highlight div h2 {
-  color: #f0f0f0;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.highlight div > img {
-  width: 36px;
-  height: 36px;
-  margin: 0;
-  padding: 4px;
-
-  background-color: #2a2a3b;
-  border-radius: 6px;
-  object-fit: contain;
-}
-
-.highlight div p {
-  color: #b8c0cc;
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-.highlight div span {
-  color: #e87219;
-  text-align: center;
-}
-
-.highlight div > a {
-  display: block;
-
-  width: 80%;
-  margin: 0px auto;
-  padding: 10px 16px;
-
-  background-color: #2a2a3b;
-  border: 2px solid #444;
-  border-radius: 12px;
-
-  color: #f0f0f0;
-  font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  font-size: 1rem;
-
-  transition: all 0.3s ease;
-}
-
-.highlight div > a:hover {
-  background-color: #ed9221;
-  border-color: #e87219;
-  box-shadow: 0px 0px 20px #ed9221cc;
-
-  transform: scale(1.01);
-}
-
-/*-----------------------------------------------------------------------------------------------------------------------------------------*/
-
-/* Seção de Games */
-#games {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  gap: 20px;
 
   padding: 20px;
 
@@ -253,10 +185,63 @@ header button:hover {
   background-size: cover;
 }
 
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+#highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 20px;
+
+  background-color: #1c2733;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+  cursor: pointer;
+}
+
+#highlight:hover {
+  transform: scale(1.01);
+}
+
+#highlight img {
+  display: block;
+
+  width: 100%;
+
+  margin: 0px auto;
+
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+#highlight h2 {
+  color: #f0f0f0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#highlight p {
+  color: #b8c0cc;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Seção de Games */
+#games {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 20px;
+}
+
 #games a {
-  width: 80%;
-  max-width: 400px;
-  height: min-content;
+  width: 100%;
+  max-width: 300px;
+
   margin: 0 auto;
   text-decoration: none;
 }
@@ -315,11 +300,230 @@ article p {
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
+#overview {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  height: 100%;
+
+  background-color: #00000066;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#overview header {
+  display: flex;
+  align-items: end;
+
+  height: 250px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#overview header > div {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 10px 20px;
+
+  background: linear-gradient(to bottom, #1c273357, #1c2733);
+  backdrop-filter: blur(10px);
+}
+
+#overview header > div a {
+  display: flex;
+  height: min-content;
+
+  padding: 2px 5px;
+
+  background: linear-gradient(to right, #622fda, #5218d8);
+  border-radius: 3px;
+
+  color: #f0f0f0;
+}
+
+#overview header > div a:hover {
+  transform: scale(1.01);
+  background: linear-gradient(to right, #5218d8, #622fda);
+}
+
+#overview header > div > div {
+  display: flex;
+  gap: 5px;
+}
+
+#overview header > div button {
+  color: #f5f5f5;
+
+  cursor: pointer;
+}
+
+#overview > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  padding: 10px;
+
+  background: linear-gradient(to bottom, #1c2733, #1c273357);
+  backdrop-filter: blur(10px);
+}
+
+#overview nav {
+  display: flex;
+  gap: 5px;
+
+  padding: 10px;
+
+  background-color: #1c2733d2;
+}
+
+#overview nav button {
+  justify-content: flex-start;
+  flex: 1;
+
+  padding: 2px 5px;
+
+  border-radius: 2px;
+
+  color: #f0f0f0ad;
+
+  cursor: pointer;
+}
+
+#overview nav button:focus {
+  background-color: #a3a3a348;
+}
+
+.details {
+  display: none;
+  flex: 1;
+
+  padding: 10px;
+
+  background-color: #1c2733d2;
+
+  overflow-y: auto;
+
+  color: #f0f0f0;
+}
+
+.info {
+  display: flex;
+}
+
+.info > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.info img {
+  width: 90px;
+  height: auto;
+
+  box-shadow: 0px 0px 10px black;
+
+  
+}
+
+.info #tags p {
+ font-size: 0.8rem;
+}
+
+.about {
+}
+
+.about p {
+  font-size: 0.9rem;
+}
+
+.updates {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.updates h2 {
+  text-align: center;
+}
+
+.updates details {
+  width: 100%;
+
+  margin-bottom: 20px;
+  padding: 16px;
+
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.updates details[open] {
+  background-color: #252525;
+  border-color: #6a32d4;
+}
+
+.updates details summary {
+  padding: 8px;
+
+  background: linear-gradient(to right, #622fda, #5218d8);
+  border-radius: 6px;
+
+  color: #f0f0f0;
+  font-weight: 600;
+  font-size: 1.1rem;
+
+  cursor: pointer;
+}
+
+.updates details summary:hover {
+  background: linear-gradient(to right, #5218d8, #622fda);
+}
+
+.updates details h2 {
+  margin-top: 16px;
+  padding-bottom: 4px;
+
+  border-bottom: 1px solid #444;
+
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.updates details p {
+  margin: 8px 0;
+
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.documentation {
+  display: none;
+  border: 1px solid yellow;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+
 /* Rodapé */
 footer {
-  background-color: #121212;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   padding: 30px;
+
+  background-color: #121212;
+
+  color: white;
   text-align: center;
 }
 
