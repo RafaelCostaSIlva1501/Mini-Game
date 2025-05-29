@@ -48,12 +48,28 @@ const overview = (index) => {
 
   // Info
   DOM.portrait.src = cards[index].portrait[0];
-  cards[index].tags.forEach((e) => {
-    const p = createElement("p");
-    p.textContent = e;
 
-    DOM.tags.appendChild(p);
+  cards[index].tags.forEach((e) => {
+    const div = createElement("div");
+
+    const span = createElement("span");
+    span.classList.add("material-symbols-outlined");
+    span.textContent = e[1];
+
+    const p = createElement("p");
+    p.textContent = e[0];
+
+    DOM.tags.appendChild(div);
+    div.appendChild(span);
+    div.appendChild(p);
   });
+
+  const a = createElement("a");
+  a.textContent = cards[index].dev[0];
+  a.href = cards[index].dev[1];
+
+  DOM.dev.appendChild(a);
+  DOM.release.textContent = cards[index].release;
 
   // Sobre
   DOM.overview.style.backgroundImage = `url("${cards[index].banner[0]}")`;

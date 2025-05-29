@@ -2,13 +2,21 @@ export const cards = [
   // Snake Game
   {
     name: "Snake Game",
+    dev: ["Dev Rafael", "https://rafaelcostasilva1501.github.io/Portfolio/"],
+    release: "27 de Set 2024",
     banner: ["img/banner/snake-game.webp", "Snake Game Banner"],
     portrait: ["img/portrait/snake-game.png", "Snake Game Portrait"],
     description:
       "O clássico que nunca sai de moda! Controle uma cobrinha faminta e desafie seus reflexos enquanto coleta alimentos para crescer cada vez mais. Quanto maior você fica, mais difícil é se mover sem se enrolar! Desvie dos próprios movimentos, ultrapasse seus recordes e mostre quem é o mestre!",
     link: "https://rafaelcostasilva1501.github.io/Snake-Game/",
     github: "https://github.com/RafaelCostaSIlva1501/Snake-Game",
-    tags: ["Mobile", "Desktop", "Single Player"],
+    tags: [
+      ["Mobile", "phone_iphone"],
+      ["Desktop", "computer"],
+      ["Um Jogador", "person"],
+      ["Teclado", "keyboard"],
+      ["Web", "Language"],
+    ],
     icon: ["js", "html5", "css3"],
     update: [
       {

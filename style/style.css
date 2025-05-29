@@ -415,6 +415,8 @@ article p {
 
 .info {
   display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .info > div {
@@ -426,16 +428,37 @@ article p {
 }
 
 .info img {
-  width: 90px;
+  width: 80px;
   height: auto;
 
   box-shadow: 0px 0px 10px black;
+}
 
-  
+.info #tags div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .info #tags p {
- font-size: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.info #tags span {
+  font-size: 0.9rem;
+}
+
+.info > p {
+  color: #f5f5f556;
+  font-size: 0.9rem;
+}
+
+.info p span {
+  color: #f5f5f5d3;
+}
+
+.info p span a {
+  color: #f5f5f5d3;
 }
 
 .about {
@@ -449,10 +472,6 @@ article p {
   display: none;
   flex-direction: column;
   gap: 10px;
-}
-
-.updates h2 {
-  text-align: center;
 }
 
 .updates details {
