@@ -20,35 +20,39 @@ const createElement = (tag) => {
   return element;
 };
 
-cards.forEach((e, i) => {
+cards.slice(1).forEach((e, i) => {
   const article = createElement("article");
   article.addEventListener("click", () => {
-    overview(i);
+    overview(i + 1); // i + 1 porque slice começa em 0 aqui
   });
 
   const img = createElement("img");
-  img.src = e.banner[0];
-
-  const h3 = createElement("h3");
-  h3.textContent = e.name;
-
-  const p = createElement("p");
-  p.textContent = e.description;
+  img.src = `img/banner/${e.access}.jpg`;
 
   DOM.games.appendChild(article);
-
   article.appendChild(img);
-  article.appendChild(h3);
-  article.appendChild(p);
 });
 
 const overview = (index) => {
   DOM.main.style.display = "none";
   DOM.overview.style.display = "flex";
 
-  // Info
-  DOM.portrait.src = cards[index].portrait[0];
+  DOM.overview.style.backgroundImage = `url("img/banner/${cards[index].access}.jpg")`;
+  DOM.banner.style.backgroundImage = `url("img/banner/${cards[index].access}.jpg")`;
+  DOM.link.href = cards[index].link;
 
+  // Info
+  info(index);
+
+  //Atualizações
+  update(index);
+};
+
+const info = (index) => {
+  // Imagem do portrait
+  DOM.portrait.src = `img/portrait/${cards[index].access}.png`;
+
+  // Tags do jogo
   cards[index].tags.forEach((e) => {
     const div = createElement("div");
 
@@ -64,41 +68,49 @@ const overview = (index) => {
     div.appendChild(p);
   });
 
+  DOM.description.textContent = cards[index].description;
+  // Desenvolvedor do jogo com link para midia social
   const a = createElement("a");
   a.textContent = cards[index].dev[0];
   a.href = cards[index].dev[1];
-
   DOM.dev.appendChild(a);
+
+  // Data de lançamento do jogo
   DOM.release.textContent = cards[index].release;
 
   // Sobre
-  DOM.overview.style.backgroundImage = `url("${cards[index].banner[0]}")`;
-  DOM.banner.style.backgroundImage = `url("${cards[index].banner[0]}")`;
-  DOM.link.href = cards[index].link;
-  DOM.description.textContent = cards[index].description;
+};
 
-  //Atualizações
-  cards[index].update.forEach((e) => {
-    const details = createElement("details");
+const about = (index) => {
+  cards[index].about.forEach((e) => {
+    const h2 = createElement("h2");
+  });
+};
 
-    const summary = createElement("summary");
-    summary.textContent = `Atualização de ${e.date}`;
+const update = (index) => {
+  if (cards[index].update) {
+    cards[index].update.forEach((e) => {
+      const details = createElement("details");
 
-    DOM.updates.appendChild(details);
-    details.appendChild(summary);
+      const summary = createElement("summary");
+      summary.textContent = `Atualização de ${e.date}`;
 
-    e.updates.forEach((update) => {
-      const h2 = createElement("h2");
-      h2.textContent = update.title;
-      details.appendChild(h2);
+      DOM.updates.appendChild(details);
+      details.appendChild(summary);
 
-      update.items.forEach((item) => {
-        const p = createElement("p");
-        p.textContent = item;
-        details.appendChild(p);
+      e.updates.forEach((update) => {
+        const h2 = createElement("h2");
+        h2.textContent = update.title;
+        details.appendChild(h2);
+
+        update.items.forEach((item) => {
+          const p = createElement("p");
+          p.textContent = item;
+          details.appendChild(p);
+        });
       });
     });
-  });
+  }
 };
 
 DOM.btnDetails.forEach((e, i) => {

@@ -25,4 +25,7 @@ export const DOM = {
   about: document.querySelector(".about"),
   updates: document.querySelector(".updates"),
   documentation: document.querySelector(".documentation"),
+
+
+  date: document.getElementById("date")
 };
