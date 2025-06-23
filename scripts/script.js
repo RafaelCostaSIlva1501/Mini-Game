@@ -20,16 +20,110 @@ const createElement = (tag) => {
   return element;
 };
 
-cards.slice(1).forEach((e, i) => {
-  const article = createElement("article");
-  article.addEventListener("click", () => {
-    overview(i + 1); // i + 1 porque slice começa em 0 aqui
+/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+
+const displaycontrol = (sectionsSelector, clickedButton) => {
+  const sections = document.querySelectorAll(`.${sectionsSelector}`);
+
+  // Oculta todas as seções
+  sections.forEach((section) => {
+    section.style.display = "none";
   });
+
+  // Pega o data-target do botão clicado
+  const targetClass = clickedButton.getAttribute("data-target");
+  const targetSection = document.querySelector(`.${targetClass}`);
+
+  // Exibe a seção correspondente
+  if (targetSection) {
+    targetSection.style.display = "flex";
+  }
+};
+
+DOM.btnDetails.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    displaycontrol("details", btn);
+
+    DOM.btnDetails.forEach((e) => {
+      e.style.background = "none";
+    });
+
+    btn.style.backgroundColor = "#a3a3a348";
+  });
+});
+
+/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+
+const check = () => {
+  const hash = window.location.hash.substring(1);
+
+  const index = cards.findIndex((game) => game.access === hash);
+
+  if (index >= 0) {
+    overview(index);
+  } else if (hash === "home") {
+    DOM.main.style.display = "flex";
+    DOM.overview.style.display = "none";
+  }
+};
+
+const advice = () => {
+  const isAdviceClosed = localStorage.getItem("adviceClosed");
+
+  if (!isAdviceClosed) {
+    advice.style.display = "block";
+  }
+
+  DOM.closeAdvice.addEventListener("click", () => {
+    DOM.advice.style.display = "none";
+    localStorage.setItem("adviceClosed", "true");
+  });
+};
+
+window.addEventListener("hashchange", () => {
+  check();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  advice();
+  check();
+});
+
+/*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
+
+const highlight = () => {
+  const a = createElement("a");
+  a.href = `#${cards[0].access}`;
+
+  const article = createElement("article");
+
+  const img = createElement("img");
+  img.src = `img/banner/${cards[0].access}.jpg`;
+
+  DOM.highlight.appendChild(a);
+  a.appendChild(article);
+  article.appendChild(img);
+};
+
+highlight();
+
+cards.slice(1).forEach((e, i) => {
+  const a = createElement("a");
+  a.href = `#${e.access}`;
+  a.addEventListener("click", () => {
+    const index = cards.findIndex((game) => game.access === e.access);
+
+    check();
+    overview(index);
+  });
+
+  const article = createElement("article");
 
   const img = createElement("img");
   img.src = `img/banner/${e.access}.jpg`;
 
-  DOM.games.appendChild(article);
+  DOM.games.appendChild(a);
+  a.appendChild(article);
   article.appendChild(img);
 });
 
@@ -41,53 +135,23 @@ const overview = (index) => {
   DOM.banner.style.backgroundImage = `url("img/banner/${cards[index].access}.jpg")`;
   DOM.link.href = cards[index].link;
 
-  // Info
-  info(index);
-
-  //Atualizações
-  update(index);
-};
-
-const info = (index) => {
-  // Imagem do portrait
-  DOM.portrait.src = `img/portrait/${cards[index].access}.png`;
-
-  // Tags do jogo
-  cards[index].tags.forEach((e) => {
-    const div = createElement("div");
-
-    const span = createElement("span");
-    span.classList.add("material-symbols-outlined");
-    span.textContent = e[1];
-
-    const p = createElement("p");
-    p.textContent = e[0];
-
-    DOM.tags.appendChild(div);
-    div.appendChild(span);
-    div.appendChild(p);
-  });
-
-  DOM.description.textContent = cards[index].description;
-  // Desenvolvedor do jogo com link para midia social
-  const a = createElement("a");
-  a.textContent = cards[index].dev[0];
-  a.href = cards[index].dev[1];
-  DOM.dev.appendChild(a);
-
-  // Data de lançamento do jogo
-  DOM.release.textContent = cards[index].release;
-
-  // Sobre
+  about(index);
+  updates(index);
+  documentation(index);
 };
 
 const about = (index) => {
-  cards[index].about.forEach((e) => {
-    const h2 = createElement("h2");
-  });
+  DOM.portrait.src = `img/portrait/${cards[index].access}.png`;
+  DOM.description.textContent = cards[index].description;
+
+  DOM.dev.textContent = cards[index].dev[0];
+  DOM.dev.href = cards[index].dev[1];
+  DOM.release.textContent = cards[index].release;
 };
 
-const update = (index) => {
+const updates = (index) => {
+  DOM.updates.innerHTML = "";
+
   if (cards[index].update) {
     cards[index].update.forEach((e) => {
       const details = createElement("details");
@@ -113,28 +177,22 @@ const update = (index) => {
   }
 };
 
-DOM.btnDetails.forEach((e, i) => {
-  e.addEventListener("click", () => {
-    DOM.details.forEach((e) => {
-      e.style.display = "none";
-    });
+const documentation = (index) => {
+  DOM.documentation.innerHTML = "";
 
-    DOM.details[i].style.display = "flex";
+  cards[index].documentation.forEach((e) => {
+    const h2 = createElement("h2");
+    h2.textContent = e.title;
+
+    DOM.documentation.appendChild(h2);
+
+    e.text.forEach((e) => {
+      const p = createElement("p");
+      p.textContent = e;
+
+      DOM.documentation.appendChild(p);
+    });
   });
-});
+};
 
 /*-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~*/
-
-// Verifica se a mensagem de aviso já foi mostrada anteriormente
-document.addEventListener("DOMContentLoaded", () => {
-  const isAdviceClosed = localStorage.getItem("adviceClosed");
-
-  if (!isAdviceClosed) {
-    advice.style.display = "block";
-  }
-
-  DOM.closeAdvice.addEventListener("click", () => {
-    DOM.advice.style.display = "none";
-    localStorage.setItem("adviceClosed", "true");
-  });
-});
