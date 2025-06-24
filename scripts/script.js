@@ -71,7 +71,7 @@ const advice = () => {
   const isAdviceClosed = localStorage.getItem("adviceClosed");
 
   if (!isAdviceClosed) {
-    advice.style.display = "block";
+    DOM.advice.style.display = "block";
   }
 
   DOM.closeAdvice.addEventListener("click", () => {
